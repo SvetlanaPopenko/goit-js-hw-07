@@ -26,25 +26,25 @@ function onClickGallery(e) {
   if (e.target.nodeName !== 'IMG') {
     return;
   }
-  const originalEl = basicLightbox.create(
+  const instance = basicLightbox.create(
     `
   <div class="modal">
 		<img width="1200" src="${e.target.dataset.source}">
 	</div>`,
     {
-      onShow: originalEl => {
+      onShow: instance => {
         containerGallery.addEventListener('keydown', onAddModalKeydown);
       },
-      onClose: originalEl => {
+      onClose: instance => {
         containerGallery.removeEventListener('keydown', onAddModalKeydown);
       },
     }
   );
-  originalEl.show();
+  instance.show();
 
   function onAddModalKeydown(evt) {
     if (evt.code === 'Escape') {
-      originalEl.close();
+      instance.close();
     }
   }
 }
