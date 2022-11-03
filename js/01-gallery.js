@@ -23,12 +23,16 @@ function onClickGallery(evt) {
   const originalEl = basicLightbox.create(`
   <div class="modal">
 		<img width="1400" height="900" src="${evt.target.dataset.source}">
-	</div>`),
+	</div>`,
     { onShow: (instance) => {
-      containerGallery.addEventListener('keydown', onAddModalKeydown)
+      containerGallery.addEventListener('keydown', onAddModalKeydown);
      },
-    onClose: (instance) => { },}
-
+    onClose: (instance) => {
+      containerGallery.removeEventListener('keydown', onAddModalKeydown);
+     },}
+  );
+  originalEl.show();
+  
     function onAddModalKeydown(evt) {
       if (evt.code === "Escape") {
         originalEl.close();
