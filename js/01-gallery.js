@@ -27,7 +27,7 @@ function onClickGallery(e) {
   const instance = basicLightbox.create(
     `
   <div class="modal">
-		<img width="1200" src="${e.target.dataset.source}">
+		<img width="1140" src="${e.target.dataset.source}">
 	</div>`,
     {
       onShow: instance => {
